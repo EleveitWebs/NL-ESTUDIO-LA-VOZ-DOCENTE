@@ -1,25 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lavozdocente.com/</loc>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://lavozdocente.com/#quienes-somos</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://lavozdocente.com/#areas</loc>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://lavozdocente.com/#testimonios</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://lavozdocente.com/#contacto</loc>
+    <loc>https://www.estudiolavozdocente.com.ar/</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 </urlset>
-
-

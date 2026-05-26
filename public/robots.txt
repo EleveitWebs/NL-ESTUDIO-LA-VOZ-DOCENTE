@@ -1,10 +1,5 @@
 User-agent: *
-Disallow: /admin/
-Disallow: /cart/
-Disallow: /login/
-
 Allow: /
 
-Sitemap: https://lavozdocente.com/sitemap.xml
-
-
+Sitemap: https://www.estudiolavozdocente.com.ar/sitemap.xml
+Host: www.estudiolavozdocente.com.ar

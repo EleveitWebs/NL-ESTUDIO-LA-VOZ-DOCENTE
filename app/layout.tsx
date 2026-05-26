@@ -2,42 +2,42 @@ import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ 
+const BASE_DOMAIN = 'https://www.estudiolavozdocente.com.ar'
+
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 })
 
-const poppins = Poppins({ 
+const poppins = Poppins({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-poppins',
 })
 
 export const metadata: Metadata = {
-  title: 'La Voz Docente - Defensa Legal para Docentes',
-  description: 'Especialistas en derecho laboral docente. Luchamos por el reconocimiento de la disfonía como enfermedad profesional y la defensa de sus derechos.',
-  keywords: 'derecho laboral docente, disfonía, enfermedad profesional, indemnizaciones, abogados docentes',
+  title: 'La Voz Docente - Derecho laboral docente',
+  description: 'Especialistas en derecho laboral docente. Defensa de derechos de salud laboral, disfonia como enfermedad profesional e indemnizaciones.',
   authors: [{ name: 'La Voz Docente' }],
-  metadataBase: new URL('https://lavozdocente.com'),
+  metadataBase: new URL(BASE_DOMAIN),
   alternates: {
-    canonical: 'https://lavozdocente.com/',
+    canonical: '/',
   },
   openGraph: {
-    title: 'La Voz Docente - Defensa Legal para Docentes',
-    description: 'Especialistas en derecho laboral docente y disfonía profesional.',
-    url: 'https://lavozdocente.com',
+    title: 'La Voz Docente - Derecho laboral docente',
+    description: 'Especialistas en derecho laboral docente. Defensa de derechos de salud laboral, disfonia como enfermedad profesional e indemnizaciones.',
+    url: BASE_DOMAIN,
     siteName: 'La Voz Docente',
     images: [
-      { url: '/hero-v2.png', width: 1200, height: 630, alt: 'La Voz Docente' },
+      {
+        url: `${BASE_DOMAIN}/hero-v2.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Abogado especialista en derecho laboral docente',
+      },
     ],
     locale: 'es_AR',
     type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'La Voz Docente - Defensa Legal para Docentes',
-    description: 'Especialistas en derecho laboral docente y disfonía profesional.',
-    images: ['/hero-v2.png'],
   },
   icons: {
     icon: '/logo.jpg',
@@ -49,6 +49,58 @@ export const viewport = {
   initialScale: 1,
 }
 
+const legalServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LegalService',
+  name: 'La Voz Docente',
+  description: 'Especialistas en derecho laboral docente. Defendemos los derechos de salud de los educadores con mas de 10 anos de experiencia.',
+  url: BASE_DOMAIN,
+  logo: `${BASE_DOMAIN}/logo.jpg`,
+  image: `${BASE_DOMAIN}/hero-v2.png`,
+  telephone: '1124515788',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Tucuman 1539',
+    addressLocality: 'CABA',
+    addressCountry: 'AR',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+  ],
+  sameAs: ['https://instagram.com/voz_docente'],
+  areaServed: {
+    '@type': 'Country',
+    name: 'Argentina',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Areas de practica',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Reconocimiento de Disfonia',
+          description: 'Asesoramiento y gestion integral para que la afeccion vocal sea reconocida legalmente.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Cobro de Indemnizaciones',
+          description: 'Acompanamiento en el calculo y cobro de la compensacion economica por incapacidad generada por la disfonia.',
+        },
+      },
+    ],
+  },
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -56,50 +108,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="font-inter antialiased">
-        {children}
+      <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'LegalService',
-            name: 'La Voz Docente',
-            description: 'Estudio jurídico especializado en derecho laboral docente, disfonía profesional e indemnizaciones.',
-            url: 'https://lavozdocente.com',
-            logo: 'https://lavozdocente.com/hero-v2.png',
-            image: 'https://lavozdocente.com/hero-v2.png',
-            telephone: '+54 11 2451-5788',
-            email: 'contacto@lavozdocente.com',
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: 'Tucumán 1539',
-              addressLocality: 'CABA',
-              addressCountry: 'AR'
-            },
-            geo: {
-              '@type': 'GeoCoordinates',
-              latitude: -34.6037,
-              longitude: -58.3816
-            },
-            openingHoursSpecification: [{
-              '@type': 'OpeningHoursSpecification',
-              dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'],
-              opens: '09:00',
-              closes: '18:00'
-            }],
-            sameAs: ['https://instagram.com/voz_docente'],
-            areaServed: 'Argentina',
-            hasOfferCatalog: {
-              '@type': 'OfferCatalog',
-              name: 'Servicios legales',
-              itemListElement: [
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Reconocimiento de Disfonía' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Cobro de Indemnizaciones' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Asesoría Legal Docente Integral' } }
-              ]
-            }
-          }) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(legalServiceSchema) }}
         />
+      </head>
+      <body className="font-inter antialiased">
+        {children}
       </body>
     </html>
   )
